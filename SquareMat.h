@@ -28,6 +28,15 @@ namespace matlib {
         friend SquareMat operator*(double num, const SquareMat& mat);
         SquareMat operator%(const SquareMat& other) const;
         SquareMat operator%(int num) const;
+        SquareMat operator/(double num) const;
+        SquareMat operator^(int power) const;
+        // Pre-increment
+        SquareMat& operator++();
+        SquareMat& operator--();
+
+        // Post-increment
+        SquareMat operator++(int);
+        SquareMat operator--(int);
 
 
     };

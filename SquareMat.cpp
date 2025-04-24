@@ -145,20 +145,78 @@ namespace matlib
         }
         return result;
     }
-    SquareMat SquareMat::operator%(int scalar) const {
-        if (scalar == 0) {
+    SquareMat SquareMat::operator%(int num) const {
+        if (num == 0) {
             throw std::invalid_argument("Cannot perform modulo by zero.");
         }
 
         SquareMat result(size);
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
-                result.data[i][j] = static_cast<int>(data[i][j]) % scalar;
+                result.data[i][j] = static_cast<int>(data[i][j]) % num;
             }
         }
 
         return result;
     }
+    SquareMat SquareMat::operator/(double num) const {
+        if (num == 0) {
+            throw std::invalid_argument("Cannot perform div by zero.");
+        }
+
+        SquareMat result(size);
+        for (int i = 0; i < size; ++i) {
+            for (int j = 0; j < size; ++j) {
+                result.data[i][j] = data[i][j] / num;
+            }
+        }
+
+        return result;
+    }
+    SquareMat SquareMat::operator^(int power) const {
+        if (power < 0) {
+            throw std::invalid_argument("Negative powers not supported.");
+        }
+
+        SquareMat result(size);
+
+        for (int i = 0; i < size; ++i)
+            result.data[i][i] = 1;
+
+        SquareMat base = *this;
+        for (int p = 0; p < power; ++p) {
+            result = result * base;
+        }
+
+        return result;
+    }
+    SquareMat& SquareMat::operator++() {
+        for (int i = 0; i < size; ++i)
+            for (int j = 0; j < size; ++j)
+                data[i][j] += 1;
+        return *this;
+    }
+    SquareMat& SquareMat::operator--() {
+        for (int i = 0; i < size; ++i)
+            for (int j = 0; j < size; ++j)
+                data[i][j] -= 1;
+        return *this;
+    }
+    SquareMat SquareMat::operator++(int) {
+        SquareMat temp = *this;
+        ++(*this);
+        return temp;
+    }
+    SquareMat SquareMat::operator--(int) {
+        SquareMat temp = *this;
+        --(*this);
+        return temp;
+    }
+
+
+
+
+
 
 
 }
