@@ -8,6 +8,9 @@ namespace matlib {
         int size;       // גודל המטריצה (n x n)
         double** data;  // מערך דו-ממדי (בהמשך נבנה דינאמית)
 
+        //helper functions
+        double sum() const;
+
     public:
         // בונים
         SquareMat(int size);
@@ -37,6 +40,27 @@ namespace matlib {
         // Post-increment
         SquareMat operator++(int);
         SquareMat operator--(int);
+        SquareMat operator~() const;
+        double* operator[](int i);
+        const double* operator[](int i) const;
+        bool operator==(const SquareMat& other) const;
+        bool operator!=(const SquareMat& other) const;
+        bool operator>(const SquareMat& other) const;
+        bool operator>=(const SquareMat& other) const;
+        bool operator<(const SquareMat& other) const;
+        bool operator<=(const SquareMat& other) const;
+        double operator!() const;
+        SquareMat& operator+=(const SquareMat& other);
+        SquareMat& operator-=(const SquareMat& other);
+        SquareMat& operator*=(const SquareMat& other);
+        SquareMat& operator*=(double num);
+        SquareMat& operator/=(double num);
+        SquareMat& operator%=(const SquareMat& other);
+        SquareMat& operator%=(int num);
+
+
+
+
 
 
     };
