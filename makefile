@@ -9,10 +9,10 @@ Main: $(SRC) $(MAIN)
 	$(CXX) $(CXXFLAGS) -o Main $(SRC) $(MAIN)
 
 test: $(SRC) $(TEST)
-	$(CXX) $(CXXFLAGS) -o test_exec $(SRC) $(TEST)
+	$(CXX) $(CXXFLAGS) -o test $(SRC) $(TEST)
 
 valgrind: Main
 	valgrind ./Main
 
 clean:
-	rm -f Main test_exec
+	rm -f Main test
