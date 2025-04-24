@@ -20,6 +20,15 @@ namespace matlib {
 
         // אופרטור פלט
         friend std::ostream& operator<<(std::ostream& os, const SquareMat& mat);
-    };
+        SquareMat operator+(const SquareMat& other) const;
+        SquareMat operator-(const SquareMat& other) const;
+        SquareMat operator-() const;
+        SquareMat operator*(const SquareMat& other) const;
+        SquareMat operator*(double num) const;
+        friend SquareMat operator*(double num, const SquareMat& mat);
+        SquareMat operator%(const SquareMat& other) const;
+        SquareMat operator%(int num) const;
 
+
+    };
 }
