@@ -47,14 +47,6 @@ namespace matlib
         delete[] data;
     }
 
-    void SquareMat::print() const {
-        for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j)
-                std::cout << data[i][j] << " ";
-            std::cout << std::endl;
-        }
-    }
-
     std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
         for (int i = 0; i < mat.size; ++i) {
             for (int j = 0; j < mat.size; ++j)
@@ -70,6 +62,10 @@ namespace matlib
                 total += data[i][j];
         return total;
     }
+    int SquareMat::getSize() const {
+        return size;
+    }
+
 
 
     //operators:
@@ -181,23 +177,32 @@ namespace matlib
 
         return result;
     }
-    SquareMat SquareMat::operator^(int power) const {
-        if (power < 0) {
-            throw std::invalid_argument("Negative powers not supported.");
+    SquareMat SquareMat::operator^(int exponent) const {
+        if (exponent < 0) {
+            throw std::invalid_argument("Negative exponents not supported");
         }
 
         SquareMat result(size);
+        for (int i = 0; i < size; ++i) {
+            result.data[i][i] = 1.0;
+        }
 
-        for (int i = 0; i < size; ++i)
-            result.data[i][i] = 1;
+        if (exponent == 0) {
+            return result;
+        }
 
-        SquareMat base = *this;
-        for (int p = 0; p < power; ++p) {
-            result = result * base;
+        SquareMat base(*this);
+        while (exponent > 0) {
+            if (exponent % 2 == 1) {
+                result = result * base;
+            }
+            base = base * base;
+            exponent /= 2;
         }
 
         return result;
     }
+
     SquareMat& SquareMat::operator++() {
         for (int i = 0; i < size; ++i)
             for (int j = 0; j < size; ++j)
@@ -240,26 +245,26 @@ namespace matlib
         return data[i];
     }
     bool SquareMat::operator==(const SquareMat& other) const {
-        return size == other.size && sum() == other.sum();
+        return sum() == other.sum();
     }
 
     bool SquareMat::operator!=(const SquareMat& other) const {
         return !(*this == other);
     }
     bool SquareMat::operator>(const SquareMat& other) const {
-        return size == other.size && sum() > other.sum();
+        return sum() > other.sum();
     }
 
     bool SquareMat::operator>=(const SquareMat& other) const {
-        return size == other.size && sum() >= other.sum();
+        return sum() >= other.sum();
     }
 
     bool SquareMat::operator<(const SquareMat& other) const {
-        return size == other.size && sum() < other.sum();
+        return sum() < other.sum();
     }
 
     bool SquareMat::operator<=(const SquareMat& other) const {
-        return size == other.size && sum() <= other.sum();
+        return sum() <= other.sum();
     }
     double SquareMat::operator!() const {
         if (size == 1) {
@@ -363,22 +368,4 @@ namespace matlib
 
         return *this;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

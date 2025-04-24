@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -std=c++17
 
 SRC = SquareMat.cpp
 MAIN = Main.cpp
-TEST = test.cpp
+TEST = testSquareMat.cpp
 
 Main: $(SRC) $(MAIN)
 	$(CXX) $(CXXFLAGS) -o Main $(SRC) $(MAIN)

@@ -20,6 +20,7 @@ namespace matlib {
 
         // פונקציות עזר
         void print() const;
+        int getSize() const;
 
         // אופרטור פלט
         friend std::ostream& operator<<(std::ostream& os, const SquareMat& mat);
