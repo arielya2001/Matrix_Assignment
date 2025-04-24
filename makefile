@@ -11,8 +11,10 @@ Main: $(SRC) $(MAIN)
 test: $(SRC) $(TEST)
 	$(CXX) $(CXXFLAGS) -o test $(SRC) $(TEST)
 
-valgrind: Main
-	valgrind ./Main
+valgrind: Main test
+	valgrind --leak-check=full --track-origins=yes ./Main
+	valgrind --leak-check=full --track-origins=yes ./test
+
 
 clean:
 	rm -f Main test
