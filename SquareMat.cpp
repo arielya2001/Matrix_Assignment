@@ -234,16 +234,18 @@ namespace matlib
         }
         return result;
     }
-    double* SquareMat::operator[](int i) {
-        if (i < 0 || i >= size)
-            throw std::out_of_range("Row index out of range.");
-        return data[i];
+    SquareMat::RowProxy SquareMat::operator[](int row) {
+        if (row < 0 || row >= size)
+            throw std::out_of_range("Row index out of range");
+        return RowProxy(data[row], size);
     }
-    const double* SquareMat::operator[](int i) const {
-        if (i < 0 || i >= size)
-            throw std::out_of_range("Row index out of range.");
-        return data[i];
+
+    const SquareMat::RowProxy SquareMat::operator[](int row) const {
+        if (row < 0 || row >= size)
+            throw std::out_of_range("Row index out of range");
+        return RowProxy(data[row], size);
     }
+
     bool SquareMat::operator==(const SquareMat& other) const {
         return sum() == other.sum();
     }

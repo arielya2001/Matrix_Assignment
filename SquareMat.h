@@ -11,7 +11,30 @@ namespace matlib {
         //helper functions
         double sum() const;
 
+
+        class RowProxy {
+        public:
+            RowProxy(double* row, int size) : row_(row), size_(size) {}
+
+            double& operator[](int col) {
+                if (col < 0 || col >= size_)
+                    throw std::out_of_range("Column index out of range");
+                return row_[col];
+            }
+
+            const double& operator[](int col) const {
+                if (col < 0 || col >= size_)
+                    throw std::out_of_range("Column index out of range");
+                return row_[col];
+            }
+
+        private:
+            double* row_;
+            int size_;
+        };
+
     public:
+
         // בונים
         SquareMat(int size);
         SquareMat(const SquareMat& other); // copy constructor
@@ -42,8 +65,8 @@ namespace matlib {
         SquareMat operator++(int);
         SquareMat operator--(int);
         SquareMat operator~() const;
-        double* operator[](int i);
-        const double* operator[](int i) const;
+        RowProxy operator[](int row);
+        const RowProxy operator[](int row) const;
         bool operator==(const SquareMat& other) const;
         bool operator!=(const SquareMat& other) const;
         bool operator>(const SquareMat& other) const;

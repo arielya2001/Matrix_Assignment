@@ -54,6 +54,16 @@ TEST_CASE("Accessing out-of-range row throws") {
     CHECK_THROWS_AS(cm[-1], std::out_of_range);
     CHECK_THROWS_AS(cm[2], std::out_of_range);
 }
+TEST_CASE("Accessing out-of-range column throws") {
+    SquareMat m(2);
+
+    CHECK_THROWS_AS(m[0][-1], std::out_of_range);
+    CHECK_THROWS_AS(m[0][2], std::out_of_range);
+
+    const SquareMat cm(2);
+    CHECK_THROWS_AS(cm[0][-1], std::out_of_range);
+    CHECK_THROWS_AS(cm[0][2], std::out_of_range);
+}
 
 TEST_CASE("Operations on matrices of different sizes throw") {
     SquareMat a(2);
