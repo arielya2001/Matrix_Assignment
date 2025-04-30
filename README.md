@@ -49,6 +49,10 @@ Run memory checks with:
 ```
 make valgrind
 ```
+Clean the project with:
+```
+make clean
+```
 
 ## Notes
 - All matrices must be square (`n x n`).
