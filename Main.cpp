@@ -74,12 +74,12 @@ int main() {
     int counter = 1;
     for (int i = 0; i < m4.getSize(); ++i) {
         for (int j = 0; j < m4.getSize(); ++j) {
-            m3[i][j] = counter++;
+            m4[i][j] = counter++;
         }
     }
 
-    std::cout << "\nm3 (3x3 filled with getSize loop):\n" << m3;
-    std::cout << "Determinant of m3: " << !m4 << "\n";
+    std::cout << "\nm4 (3x3 filled with getSize loop):\n" << m4;
+    std::cout << "Determinant of m4: " << !m4 << "\n";
 
 
 
