@@ -49,6 +49,7 @@ Run memory checks with:
 ```
 make valgrind
 ```
+
 Clean the project with:
 ```
 make clean
