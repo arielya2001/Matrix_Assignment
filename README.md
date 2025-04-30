@@ -1,4 +1,5 @@
 # Matrix Assignment - SquareMat
+# Mail - ariel.yaacobi@msmail.ariel.ac.il
 
 ## Overview
 This project implements a square matrix class (`SquareMat`) in C++. It supports a wide variety of operations on square matrices such as addition, subtraction, multiplication (both scalar and matrix), modulo operations, determinant calculation, transposition, and comparisons. The project includes:
