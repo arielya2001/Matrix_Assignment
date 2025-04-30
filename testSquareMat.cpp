@@ -429,4 +429,10 @@ TEST_CASE("Const matrix read-only operations") {
 
     CHECK(!m == -2);
 }
+TEST_CASE("Self-assignment doesn't break matrix") {
+    SquareMat m(2);
+    m[0][0] = 1;
+    m = m;
+    CHECK(m[0][0] == 1); // לא קורס.
+}
 
