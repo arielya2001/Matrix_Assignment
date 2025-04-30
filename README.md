@@ -53,3 +53,8 @@ make valgrind
 - All matrices must be square (`n x n`).
 - Division and modulo by zero are explicitly checked and throw exceptions.
 - Comparison between matrices is based on the sum of their elements (as specified).
+
+## Author & Date
+- Developed by: Ariel Ya'acobi
+- Assignment: Matrix Assignment - SquareMat
+- Date: April 2025
