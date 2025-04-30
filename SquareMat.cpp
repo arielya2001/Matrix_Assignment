@@ -1,3 +1,6 @@
+/*
+Mail - ariel.yaacobi@msmail.ariel.ac.il
+*/
 #include "SquareMat.h"
 #include <stdexcept>
 #include <cmath>
